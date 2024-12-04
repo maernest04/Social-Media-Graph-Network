@@ -180,6 +180,8 @@ User* User_Graph::find_most_active_user()
     //Traversing through the user map, checking for which user has the most posts
     for(const auto &user : user_map)
     {
+        //Checks if the most active user is null or if user we are checking
+        //has more posts than our most active user
         if(most_active_user == nullptr ||
            user.second->get_number_of_posts() > most_active_user->get_number_of_posts())
         {
@@ -204,6 +206,7 @@ vector<User*> User_Graph::search_users_by_interest(const string interest)
     //Traversing through the user map to find if they have the interest we are looking for
     for(const auto &user : user_map)
     {
+        //Checking if the user has the interest
         if(user.second->has_interest(interest))
         {
             interested_users.push_back(user.second);
@@ -317,6 +320,7 @@ vector<User*> User_Graph::recommend_friends_DFS_stack(const string user_name)
 
     visited_users.insert(starting_user);
 
+    //Pushing all of the starting user's friends before starting DFS
     for(const auto &friendship : friendships_map[starting_user])
     {
         users_to_visit.push(friendship);
@@ -341,6 +345,8 @@ vector<User*> User_Graph::recommend_friends_DFS_stack(const string user_name)
         //Iterating through the current user's interests
         for(const auto &interest : starting_user_interests)
         {
+            //Checks if the potential friend has the starting user's interest
+            //and if the potential friend is already a friend
             if(potential_friend->has_interest(interest) && friendships_map[starting_user].count(potential_friend) == 0)
             {
                 recommended_friends.push_back(potential_friend);
@@ -437,18 +443,21 @@ void User_Graph::DFS_helper(User *potential_friend, User *starting_user, const u
 
 vector<User*> User_Graph::shortest_path_between_users_BFS(const string first_user_name, const string second_user_name)
 {
-    //Checking if either user exists in the graph
+    //Checking if the first user exists in the graph
     if(!has_user(first_user_name))
     {
         cout << first_user_name << " does not exist in the graph!" << endl;
         return {};
     }
+
+    //Checking if the second user exists in the graph
     if(!has_user(second_user_name))
     {
         cout << second_user_name << " does not exist in the graph!" << endl;
         return {};
     }
 
+    //Checking if the 2 users are the same
     if(first_user_name == second_user_name)
     {
         cout << "Both names refer to the same user!" << endl;
