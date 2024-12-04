@@ -1,1 +1,2 @@
 # Social-Media-Graph-Network
+The Social Media Graph Network uses a graph to simulate the idea of a social media network. With social media networks, users to can add other users as friends and can be recommended other users as friends based on mutual friendship or shared interests. In this program, you can create your own network with User objects, inserting them into the graph, adding friendships between users you created, and then get friend recommendations for specific users in the graph.
