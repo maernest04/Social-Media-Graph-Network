@@ -18,6 +18,17 @@ private:
     //Unordered map with the key as the pointer to the user
     //and the value being an unordered set of the user's friends
     unordered_map<User*, unordered_set<User*>> friendships_map;
+    /**
+     * Recursive helper function
+     * @param current_user current user we are visiting
+     * @param starting_user user we are recommending friends for
+     * @param starting_user_interests interests of the starting user
+     * @param recommended_friends vector recommended friends that will be returned
+     * @param visited_users unordered set of visited users
+     */
+    void DFS_helper(User *current_user, User* starting_user, const unordered_set<string> starting_user_interests,
+                    vector<User*>& recommended_friends, unordered_set<User*>& visited_users);
+
 public:
     /**
      * Default constructor for a user graph
@@ -115,16 +126,6 @@ public:
      * @return vector of pointers to all users with similar interests
      */
     vector<User*> recommend_friends_DFS(const string user_name);
-    /**
-     * Recursive helper function
-     * @param current_user current user we are visiting
-     * @param starting_user user we are recommending friends for
-     * @param starting_user_interests interests of the starting user
-     * @param recommended_friends vector recommended friends that will be returned
-     * @param visited_users unordered set of visited users
-     */
-    void DFS_helper(User *current_user, User* starting_user, const unordered_set<string> starting_user_interests,
-                    vector<User*>& recommended_friends, unordered_set<User*>& visited_users);
 
 
 
