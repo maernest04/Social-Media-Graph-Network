@@ -53,10 +53,35 @@ int main() {
     user_10->add_interest("Reading");
     user_10->add_interest("Photography");
 
+    cout << endl;
+
     user_1->print_user_info();
     user_7->print_user_info();
 
     cout << endl;
+
+
+
+
+
+    //Testing the remove interest
+    string result = "";
+
+    user_1->remove_interest("Gaming");
+    user_1->remove_interest("Music");
+    result = (user_1->has_interest("Music") ? "The user has music as an interest" :
+              "The user doesn't have music as an interest.");
+
+    cout << result << endl;
+
+    user_1->add_interest("Music");
+    result = (user_1->has_interest("Music") ? "The user has music as an interest" :
+                                                      "The user doesn't have music as an interest.");
+
+    cout << result << endl << endl;
+
+
+
 
     //Adding users to the graph
     graph.add_user(user_1);
@@ -87,8 +112,6 @@ int main() {
 
 
     //Testing if the user exists in the graph
-    string result = "";
-
     graph.remove_user("Frank");
 
     result = graph.has_user("Frank") ? "Frank exists in the graph." : "Frank doesn't exist in the graph";

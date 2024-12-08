@@ -36,6 +36,11 @@ public:
      */
     void add_interest(string interest);
     /**
+     * Removes an interest from the user
+     * @param interest to be removed
+     */
+    void remove_interest(string interest);
+    /**
      * Checks if the user has the interest
      * @param interest we are trying to find
      * @return true or false

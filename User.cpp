@@ -23,6 +23,21 @@ void User::add_interest(string interest)
     }
 
     interests.insert(interest);
+
+    cout << interest << " has been added to " << get_name() << "'s interests." << endl;
+}
+
+void User::remove_interest(string interest)
+{
+    if(interests.count(interest) == 0)
+    {
+        cout << "This user already does not have this interest!" << endl;
+        return;
+    }
+
+    interests.erase(interest);
+
+    cout << interest << " has been removed from " << get_name() << "'s interests." << endl;
 }
 
 bool User::has_interest(const string interest)
